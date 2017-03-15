@@ -1,11 +1,11 @@
-/* eslint-disable no-console */
+/**
+ * Created by anchal on 3/3/17.
+ */
 import React from 'react'
 import {render} from 'react-dom';
-import Entry from './Application'
+import Entry from './App1'
 
 let app = document.getElementById('main')
 
 
 render(<Entry/>,app)
-//import REACTDOM from 'react-dom'
-//ReactDOM.render(app)
