@@ -1,6 +1,7 @@
 /**
  * Created by ttnd on 27/12/16.
  */
+
 import React  from    'react'
 import Title from './Title'
 import Listitem from './Listitem'
@@ -35,20 +36,10 @@ export default class Application extends React.Component {
 
   incrementQty(keyval){  //0->1st row
 
-    let {list} = this.state ;
-  {this.state.list.map((item,i) => {
-
-    if(i==keyval) {
-
-      item.qty += 1;
-
-
-    }
-  })}
-
+       this.state.list[keyval].qty += 1;
 
     this.setState({
-      list:list
+      list:this.state.list
    })
 
       //console.log(this.state.list[0].qty)
@@ -56,14 +47,11 @@ export default class Application extends React.Component {
 
   decrementQty(keyval){
        let {list} = this.state ;
-     {this.state.list.map((item,i) => {
 
-       if (i == keyval) {
-          if(item.qty!=1)
-         item.qty -= 1;
-       }
-     })
-     }
+       if(list[keyval].qty!=1)
+         list[keyval].qty -= 1
+
+
 
    this.setState({
       list:list
@@ -73,14 +61,7 @@ export default class Application extends React.Component {
 
   deleteItem(rowkey){
   let {list} = this.state ;
-  {this.state.list.map((item,i) => {
-         if (i == rowkey) {//found
-          this.state.list.splice(i,1);
-
-        }
-      })
-      }
-
+ this.state.list.splice(i,1);
 
   this.setState({
         list:list
