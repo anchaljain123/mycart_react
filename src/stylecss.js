@@ -6,4 +6,5 @@ export default {
     background : 'yellow',
     fontSize:'20px'
   }
+
 }

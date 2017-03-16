@@ -3,15 +3,20 @@
  */
 
 import React from 'react'
+/*import Stylecss from  './stylecss'*/
 
 export default class Newprac extends React.Component {
   constructor(){
-    super()
+    super();
+
+
   }
 
   render(){
 
-    return(<h3> My Cart </h3>);
+
+
+    return(<div > My Cart </div>);
 
   }
 }

@@ -4,36 +4,58 @@
 
 import React from 'react'
 
-export default class Listitem extends React.Component{
+ class Listitem extends React.Component{
   constructor(){
     super();
+
 
   }
 
 
   render(){
+    let sumItem=0;
 
     return(
+
+
       <div>
         <h1>Show Table </h1>
         <table>
-          { this.props.Item.map((item,i)=>(
+        {this.props.Item.map((item, i) => {
 
-          <tr>
-            <td>The value : {item}</td>
-          </tr>
+          return (
+            <tr key={i}>
+              <td>{item.fruit}</td>
+              <td>{item.qty}</td>
+              <td>{item.price}</td>
+              <td><input type="button" value="+" onClick={() => {
+                return this.props.IncrementQty(i)
+              }}/></td>
+              <td><input type="button" value="-" onClick={() => (this.props.DecrementQty(i))}/></td>
+              <td><input type="button" value="Delete" onClick={() => {
+                this.props.DeleteItem(i)
+              }}/></td>
+              <td>{sumItem += (item.qty * item.price)}</td>
+            </tr>
 
-          ))}
-
-            {/*<td> <input type="button" value="ADD" onClick={this.props.fn}/> </td>*/}
-           {/* <td> <input type="button" value="ADD" onClick={this.props.fn}/> </td>
-            <td> <input type="button" value="ADD" onClick={this.props.fn}/> </td>*/}
+          );
 
 
+        })
+        }
         </table>
-
+          <span>SUM: {sumItem}</span>
         </div>
     );
   }
 }
 
+
+Listitem.propTypes={//for validation & documentatn
+  Item:React.PropTypes.array.isRequired
+}
+Listitem.defaultProps={
+  Item:[]
+}
+
+export default Listitem;
