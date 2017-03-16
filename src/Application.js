@@ -36,12 +36,14 @@ export default class Application extends React.Component {
 
   incrementQty(keyval){  //0->1st row
 
-       this.state.list[keyval].qty += 1;
+   /*    this.state.list[keyval].qty += 1;
 
     this.setState({
       list:this.state.list
-   })
+   })*/
 
+      let newobj=Object.assign([],this.state.list,{keyval: this.state.list[keyval].qty += 1})
+    this.setState(newobj)
       //console.log(this.state.list[0].qty)
 }
 
