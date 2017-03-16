@@ -2,6 +2,7 @@
  * Created by anchal on 15/3/17.
  */
 import React from 'react'
+import Styles from './stylecss'
 
 export default class Form extends React.Component{
 
@@ -17,9 +18,9 @@ export default class Form extends React.Component{
 
     return(
       <div>
-        <input type="text" value={this.state.text}  onChange= {(event)=> this.setState({text: event.target.value})} placeholder="Enter item-price"/>
-        <h3>text :{this.state.text}</h3>
-        <input type ="button" value="addItem" onClick={() =>this.props.addItem(this.state.text)} />
+        <input type="text" value={this.state.text} style={Styles.form} onChange= {(event)=> this.setState({text: event.target.value})} placeholder="Enter item-price"/>
+
+        <input type ="button" value="addItem" style={{height:'38px'}} onClick={() =>this.props.addItem(this.state.text)} />
       </div>
     );
 

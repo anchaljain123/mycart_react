@@ -63,7 +63,10 @@ export default class Application extends React.Component {
 
   deleteItem(rowkey){
   let {list} = this.state ;
- this.state.list.splice(i,1);
+
+        this.state.list.splice(rowkey,1);
+
+
 
   this.setState({
         list:list
@@ -76,9 +79,9 @@ export default class Application extends React.Component {
 
     const divstyle={
       margin:'auto',
-      width: '50%',
-      border: '3px grey',
-      padding:'10px'
+      width: '35%',
+      background:'#DCDCDC',
+       padding:'10px'
     }
           return (<div style={divstyle}>
       <Title/>

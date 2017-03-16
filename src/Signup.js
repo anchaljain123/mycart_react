@@ -22,9 +22,8 @@ export default class Signup extends React.Component{
     console.log(Node)*/
 
     let state={}
-    var t=  event.target.value;
+
     state[event.target.name]=event.target.value;
-    console.log(state.uname + " "+t);
 
     this.setState(state);
   /*  var t=  event.target.name
@@ -39,8 +38,16 @@ export default class Signup extends React.Component{
 
   validate(event){
 
+      event.preventDefault();
+
     if(this.state.uname==' '||this.state.pwd==''||this.state.cfmpwd)
       this.setState({msg:'cannot be blank'})
+    else
+    if(this.state.pwd==this.state.cfmpwd)
+      this.setState({msg:'you have registered successfully'})
+    else
+      this.setState({msg:'old and new pwd donot match'})
+
   }
 
   render(){

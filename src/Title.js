@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-/*import Stylecss from  './stylecss'*/
+import Stylecss from  './stylecss'
 
 export default class Newprac extends React.Component {
   constructor(){
@@ -16,7 +16,7 @@ export default class Newprac extends React.Component {
 
 
 
-    return(<div > My Cart </div>);
+    return(<div style={Stylecss.title}> My Cart </div>);
 
   }
 }
