@@ -28,7 +28,7 @@ class Tableitems extends React.Component{
 
           return (
 
-                <div key={i}>
+                <div key={i} className="list-group">
                   {item.show?
                   <div>
                     <input
@@ -44,7 +44,7 @@ class Tableitems extends React.Component{
 
 
                     <input
-                      type="text"
+                      type="date"
                       value={this.state.text2}
                       placeholder="Enter Todo Date"
                       onChange={(event) => {
@@ -53,7 +53,7 @@ class Tableitems extends React.Component{
                       }}
 
                     />
-                    <p className="bg-primary">{item.status}</p>
+                    <p >{item.status}</p>
                     <input
                       type="button"
                       value="Save Updates" className=" btn btn-success"

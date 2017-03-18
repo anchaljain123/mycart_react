@@ -29,7 +29,7 @@ export default class Input extends React.Component {
               />
         </div>
         <div className="col-xs-3">
-        <input type="text" value={this.state.date} className="form-control"
+        <input type="date" value={this.state.date} className="form-control" id="date"
                placeholder="Enter dateformat dd/mm/yy"
                onChange={(event) => this.setState({date: event.target.value})}
                />
