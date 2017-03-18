@@ -26,14 +26,14 @@ import Stylecss from './stylecss'
           return (
             <div style={Stylecss.itemrow} >
             <tr key={i}>
-              <td style={{paddingLeft:'40px'}}>{item.fruit}</td>
-              <td>{item.qty}</td>
-              <td>{item.price}</td>
-              <td><input type="button" value="+" style={Stylecss.btn} onClick={() => {
+              <td style={{paddingLeft:'40px',paddingRight:'10px'}}>{item.fruit}</td>
+              <td style={{paddingRight:'10px'}}>{item.qty}</td>
+              <td style={{paddingRight:'10px'}}>{item.price}</td>
+              <td style={{paddingRight:'10px'}}><input type="button" value="+" style={Stylecss.btn} onClick={() => {
                 return this.props.IncrementQty(i)
               }}/></td>
-              <td><input type="button" style={Stylecss.btn} value="-" onClick={() => (this.props.DecrementQty(i))}/></td>
-              <td><input type="button" style={Stylecss.btn} value="Delete" onClick={() => {this.props.DeleteItem(i)}}/></td>
+              <td style={{paddingRight:'10px'}}><input type="button" style={Stylecss.btn} value="-" onClick={() => (this.props.DecrementQty(i))}/></td>
+              <td style={{paddingRight:'10px'}}><input type="button" style={Stylecss.btn} value="Delete" onClick={() => {this.props.DeleteItem(i)}}/></td>
 
             </tr>
               <span style={{display:"none"}}>{sumItem += (item.qty * item.price)}</span>

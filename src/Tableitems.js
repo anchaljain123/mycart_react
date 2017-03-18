@@ -14,7 +14,8 @@ class Tableitems extends React.Component{
 
     this.state = {
       text1: "",
-      text2: ""
+      text2: "",
+      isChecked:false,
     }
   }
 
@@ -22,7 +23,7 @@ class Tableitems extends React.Component{
   render(){
 
     return(
-      <div>
+      <div class="table-responsive" style={{'display':'inline'}}>
         {this.props.items.map((item, i) => {
 
           return (
@@ -33,27 +34,29 @@ class Tableitems extends React.Component{
                     <input
                       type="text"
                       value={this.state.text1}
+                      placeholder="Enter Todo Name"
                       onChange={(event) => {
                         this.setState({text1: event.target.value});
 
                       }}
-                      placeholder="Enter Todo Name"
+
                     />
 
 
                     <input
                       type="text"
                       value={this.state.text2}
+                      placeholder="Enter Todo Date"
                       onChange={(event) => {
                         this.setState({text2: event.target.value});
 
                       }}
-                      placeholder="Enter Todo Date"
+
                     />
-                    <div>  {item.status} </div>
+                    <p className="bg-primary">{item.status}</p>
                     <input
                       type="button"
-                      value="Save Updates"
+                      value="Save Updates" className=" btn btn-success"
                       onClick={(event) => {
 
                         this.props.edititem(this.state,i);
@@ -63,20 +66,29 @@ class Tableitems extends React.Component{
                     />
                   </div>
 
-              :<div>
-                <div> {item.name} </div>
-                <div> {item.date} </div>
-                <div>  {item.status} </div>
-                <div>
+              :<div  className="panel panel-default">
+                <div style={{display:'inline-block'}} className="panel-body"> {item.name} </div>
+                <div style={{display:'inline-block'}} className="panel-body"> {item.date} </div>
+                <div style={{display:'inline-block'}} className="panel-body"> {item.status} </div>
+                <div style={{display:'inline-block'}} className="panel-body ">
+                  <input type="checkbox" value=" " checked={this.state.isChecked}
+                         onChange={(event)=>{
+                           this.setState({isChecked: event.target.checked});
+                           (this.props.checkstatus(event.target.checked,i))}}
+                  />
                   <input
                     type="button"
-                    value="Delete"
+                    value="Delete" className="btn btn-default glyphicon glyphicon-remove"
                     onClick={() => (this.props.Deleteitem(i))}
                   />
                 </div>
 
-                <div><input type="button" value="Edit" onClick={(event) =>
-                  this.props.updateshow(i)} /></div>
+                <div style={{display:'inline-block'}} className="panel-body">
+                  <button type="button"
+                         className="btn btn-default btn-sm"
+                         onClick={(event) =>
+                  this.props.updateshow(i)} >
+                    <span class="glyphicon glyphicon-pencil" ></span>Edit</button></div>
 
               </div>}
                 </div>

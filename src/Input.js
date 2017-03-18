@@ -12,9 +12,9 @@ export default class Input extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: " ",
-      date: " ",
-      status: "pending",
+      name: "",
+      date: "",
+      status: "Pending",
 
     }
 
@@ -22,18 +22,26 @@ export default class Input extends React.Component {
 
   render() {
 
-    return (
-      <div>
-        <input type="text" value={this.state.name} onChange={(event) => this.setState({name: event.target.value})}
-               placeholder="Enter Todo Name "/>
-        <input type="text" value={this.state.date} onChange={(event) => this.setState({date: event.target.value})}
-               placeholder="Enter dateformat dd/mm/yy"/>
-
-        <input type="button" value="Save" onClick={() => {
+    return (<div className="row">
+      <div className="col-xs-3">
+        <input type="text" value={this.state.name} className="form-control"
+               placeholder="Enter Todo Name " onChange={(event) => this.setState({name: event.target.value})}
+              />
+        </div>
+        <div className="col-xs-3">
+        <input type="text" value={this.state.date} className="form-control"
+               placeholder="Enter dateformat dd/mm/yy"
+               onChange={(event) => this.setState({date: event.target.value})}
+               />
+        </div>
+        <div className="col-xs-3">
+        <input type="button" className="btn btn-success" value="Save" onClick={() => {
 
           this.props.addItem(this.state)
         }}/>
+        </div>
       </div>
+
     );
 
   }

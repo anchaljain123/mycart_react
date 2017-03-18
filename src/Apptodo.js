@@ -51,12 +51,19 @@ export default class Apptodo extends React.Component {
 
   updateshow=(i)=>{
 
-    console.log(i);
     let {list}=this.state;
     list[i].show=!(list[i].show);
     this.setState(list)
 
 
+  }
+
+  updatestatus=(ischeck,i)=>{
+
+    let {list}=this.state;
+    if(ischeck==true)
+    list[i].status='done';
+    this.setState(list)
   }
 
   editItem=(newstate,indx)=>{
@@ -79,16 +86,19 @@ export default class Apptodo extends React.Component {
 
   }
 
+
+
   render(){
 
 
     return (<div>
 
-      <input type ="button" value="ADD"  onClick={() =>{
+      <input type ="button" value="ADD" className="btn btn-primary" onClick={() =>{
         this.setState({hide:!this.state.hide})}}/>
 
       { this.state.hide?<Input addItem={this.addItem.bind(this)}/>: <span />}
-      <Tableitems items={this.state.list} Deleteitem={this.deleteItem} edititem={this.editItem} updateshow={this.updateshow} />
+      <Tableitems items={this.state.list} Deleteitem={this.deleteItem} checkstatus={this.updatestatus}
+                  edititem={this.editItem} updateshow={this.updateshow} />
 
     </div>);
   }
