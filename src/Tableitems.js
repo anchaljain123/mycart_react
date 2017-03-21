@@ -15,9 +15,10 @@ class Tableitems extends React.Component{
     this.state = {
       text1: "",
       text2: "",
-      isChecked:false,
+      ischk:false,
     }
   }
+
 
 
   render(){
@@ -28,24 +29,23 @@ class Tableitems extends React.Component{
 
           return (
 
-                <div key={i} className="list-group">
+                <div key={i} className="row">
                   {item.show?
-                  <div>
+                    <div>
+                  <div className="col-xs-3">
                     <input
-                      type="text"
+                      type="text" className="form-control"
                       value={this.state.text1}
                       placeholder="Enter Todo Name"
                       onChange={(event) => {
                         this.setState({text1: event.target.value});
 
-                      }}
-
-                    />
-
-
+                      }}/>
+                    </div>
+                    <div className="col-xs-3">
                     <input
-                      type="date"
-                      value={this.state.text2}
+                      type="date" className="form-control"
+                      value={this.state.text2} style={{fontFamily:'monospace'}}
                       placeholder="Enter Todo Date"
                       onChange={(event) => {
                         this.setState({text2: event.target.value});
@@ -53,9 +53,13 @@ class Tableitems extends React.Component{
                       }}
 
                     />
-                    <p >{item.status}</p>
+                    </div>
+                      <div className="col-xs-1" style={{marginTop:'14px'}}>
+                    {item.status}
+                      </div>
+                      <div className="col-xs-1">
                     <input
-                      type="button"
+                      type="button" style={{fontFamily:'monospace'}}
                       value="Save Updates" className=" btn btn-success"
                       onClick={(event) => {
 
@@ -64,31 +68,35 @@ class Tableitems extends React.Component{
                       }}
 
                     />
+                    </div>
                   </div>
 
               :<div  className="panel panel-default">
-                <div style={{display:'inline-block'}} className="panel-body"> {item.name} </div>
-                <div style={{display:'inline-block'}} className="panel-body"> {item.date} </div>
-                <div style={{display:'inline-block'}} className="panel-body"> {item.status} </div>
+                <div style={{display:'inline-block',fontFamily:' monospace'}} className="panel-body"> {item.name} </div>
+                <div style={{display:'inline-block',fontFamily:' monospace'}} className="panel-body"> {item.date} </div>
+                <div style={{display:'inline-block',fontFamily:' monospace'}} className="panel-body"> {item.status} </div>
                 <div style={{display:'inline-block'}} className="panel-body ">
-                  <input type="checkbox" value=" " checked={this.state.isChecked}
+
+                  <input type="checkbox" value=" " checked={this.state.ischk}
                          onChange={(event)=>{
-                           this.setState({isChecked: event.target.checked});
+                           this.setState({ischk: event.target.value});
                            (this.props.checkstatus(event.target.checked,i))}}
-                  />
-                  <input
-                    type="button"
-                    value="Delete" className="btn btn-default glyphicon glyphicon-remove"
+                  />&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button
+                    type="button" style={{fontFamily:'monospace'}}
+                    value="Delete" className="btn btn-default "
                     onClick={() => (this.props.Deleteitem(i))}
-                  />
+                  >
+                    <span className="glyphicon glyphicon-remove">Delete</span>
+                  </button>
                 </div>
 
                 <div style={{display:'inline-block'}} className="panel-body">
-                  <button type="button"
+                  <button type="button" style={{fontFamily:'monospace'}}
                          className="btn btn-default btn-sm"
-                         onClick={(event) =>
-                  this.props.updateshow(i)} >
-                    <span class="glyphicon glyphicon-pencil" ></span>Edit</button></div>
+                         onClick={(event) => this.props.updateshow(i)} >
+                    <span className="glyphicon glyphicon-pencil" ></span>Edit
+                  </button></div>
 
               </div>}
                 </div>

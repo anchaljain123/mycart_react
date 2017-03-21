@@ -24,7 +24,8 @@ export default class Apptodo extends React.Component {
       name:name,
       date: date,
       status:status,
-      show:""
+      show:"",
+      isChecked:false,
 
     }
       console.log(obj)
@@ -58,11 +59,12 @@ export default class Apptodo extends React.Component {
 
   }
 
-  updatestatus=(ischeck,i)=>{
+  updatestatus=(chkval,i)=>{
+
 
     let {list}=this.state;
-    if(ischeck==true)
-    list[i].status='done';
+    list[i].isChecked=chkval;
+    list[i].status='Done';
     this.setState(list)
   }
 
@@ -90,15 +92,19 @@ export default class Apptodo extends React.Component {
 
   render(){
 
+    const divstyle={
+      margin:'auto',
+      padding:'10px'
+    }
 
-    return (<div>
+    return (<div style={divstyle}>
 
       <input type ="button" value="ADD" className="btn btn-primary" onClick={() =>{
         this.setState({hide:!this.state.hide})}}/>
 
       { this.state.hide?<Input addItem={this.addItem.bind(this)}/>: <span />}
       <Tableitems items={this.state.list} Deleteitem={this.deleteItem} checkstatus={this.updatestatus}
-                  edititem={this.editItem} updateshow={this.updateshow} />
+                  edititem={this.editItem} updateshow={this.updateshow} isChecked={this.state.isChecked} />
 
     </div>);
   }
